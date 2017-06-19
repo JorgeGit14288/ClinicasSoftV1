@@ -8,7 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace ClinicasSoftV1
+namespace WebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
