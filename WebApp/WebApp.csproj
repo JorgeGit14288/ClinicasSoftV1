@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -77,9 +85,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,6 +168,60 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Clinicas\ClinicasAreaRegistration.cs" />
     <Compile Include="Areas\Clinicas\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Clinicas\Models\clinicas.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\ClinicasModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicasModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\ClinicasModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\ClinicasModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicasModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\consultas.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\detalles_consulta.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\detalles_receta.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\empleado.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\especialidades.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\medicamentos.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\medicos.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\pacientes.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\padecimientos.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\recetas.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\roles.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Clinicas\Models\usuario_sistema.cs">
+      <DependentUpon>ClinicasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,6 +229,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Clinicas\Models\ClinicasModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClinicasModel.edmx</DependentUpon>
+      <LastGenOutput>ClinicasModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Clinicas\Models\ClinicasModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClinicasModel.edmx</DependentUpon>
+      <LastGenOutput>ClinicasModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -174,6 +256,13 @@
     <Content Include="Areas\Clinicas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Clinicas\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Clinicas\Views\Home\Index.cshtml" />
+    <EntityDeploy Include="Areas\Clinicas\Models\ClinicasModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClinicasModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Clinicas\Models\ClinicasModel.edmx.diagram">
+      <DependentUpon>ClinicasModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -203,7 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Clinicas\Models\" />
+    <Folder Include="Areas\Clinicas\Temas\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +302,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
