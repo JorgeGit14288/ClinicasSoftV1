@@ -1,0 +1,95 @@
+﻿
+
+<header class="main-header">
+    <!-- Logo -->
+    <a href="@Url.Action("About","Home")" class="logo bg-blue-gradient">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>C</b>S</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>CLINICAS </b>SF</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top bg-blue-gradient">
+        <!-- Sidebar toggle button para cotraer el menu izquierdo-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Collect the nav links, forms, and other content for toggling 
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">@DateTime.Now.ToShortDateString() <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+
+            </ul>
+        </div>
+            -->
+        <!-- /.navbar-collapse -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!--  
+               
+                             
+                -->
+                <!-- Menu para ayuda -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-question-circle"></i>  Ayuda <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Manual de usuario</a></li>
+                        <li><a href="#">Politicas de uso</a></li>
+                        <li><a href="#">Atencion al Cliente</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Red Social</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">A cerca de</a></li>
+                    </ul>
+                </li>             
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu bg-blue-gradient">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Areas/Clinicas/Temas/Plantilla/dist/img/avatar5.png" class="user-image" alt="User Image">
+                        <span class="hidden-xs">Nombre de usuario</span>
+                    </a>
+                    <ul class="dropdown-menu ">
+                        <!-- User image -->
+                        <li class="user-header bg-blue-gradient">
+                            <img src="~/Areas/Clinicas/Temas/Plantilla/dist/img/avatar5.png" class="img-circle" alt="User Image" />
+                            <p>
+                                NOmbre de usuario - Usuario Activo
+                                <small>@DateTime.Now</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-2 text-center">
+
+                                </div>
+                                <div class="col-xs-8 text-center">
+                                    @Html.ActionLink("Cambiar Password", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </div>
+                                <div class="col-xs-2 text-center">
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="@Url.Action("EditarUsuarios","AspNetUsers")" class="btn btn-primary btn-flat">Perfil</a>
+                            </div>
+
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="pull-right">
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger btn-flat">Salir</a>
+                                </div>
+                            }
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

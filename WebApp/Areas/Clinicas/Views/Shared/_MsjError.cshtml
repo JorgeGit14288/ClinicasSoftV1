@@ -1,0 +1,54 @@
+﻿
+@{
+    string error = ViewBag.Error;
+    string mensaje = ViewBag.Mensaje;
+    if (error.IsEmpty())
+    {
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8" style=" opacity:0.7;">
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <center><strong>¡ERROR...!</strong> @ViewBag.Error </center>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+    }
+    if (mensaje.IsEmpty())
+    {
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8" style=" opacity:0.7;">
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <center><strong>¡AVISO ....!</strong> @ViewBag.Mensaje </center>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+        
+
+    }
+}
