@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApp.Areas.Clinicas.Models.consultas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicos.colegiado_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pacientes.dpi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medicos.colegiado_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pacientes.dpi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idConsultas }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idConsultas }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idConsultas })
+        </td>
+    </tr>
+}
+
+</table>

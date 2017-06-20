@@ -1,0 +1,91 @@
+﻿@model WebApp.Areas.Clinicas.Models.medicos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>medicos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.colegiado_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colegiado_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_otro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_otro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clinicas.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clinicas.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idMedico }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

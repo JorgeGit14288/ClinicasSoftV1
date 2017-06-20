@@ -26,6 +26,7 @@
             <PropertyRef Name="idClinica" />
           </Key>
           <Property Name="idClinica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="Especialidad" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="administrador" Type="varchar" MaxLength="45" Nullable="false" />
@@ -66,7 +67,7 @@
           <Property Name="dosis" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="observaciones" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="empleado">
+        <EntityType Name="empleados">
           <Key>
             <PropertyRef Name="idEmpleado" />
           </Key>
@@ -159,7 +160,7 @@
           <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="45" />
         </EntityType>
-        <EntityType Name="usuario_sistema">
+        <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
@@ -171,12 +172,12 @@
         </EntityType>
         <Association Name="fk_EmpleadoClinicas">
           <End Role="clinicas" Type="Self.clinicas" Multiplicity="1" />
-          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="clinicas">
               <PropertyRef Name="idClinica" />
             </Principal>
-            <Dependent Role="empleado">
+            <Dependent Role="empleados">
               <PropertyRef Name="idClinica" />
             </Dependent>
           </ReferentialConstraint>
@@ -230,10 +231,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkAsigUser">
-          <End Role="usuario_sistema" Type="Self.usuario_sistema" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
           <End Role="asig_rol_usuario" Type="Self.asig_rol_usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="usuario_sistema">
+            <Principal Role="usuarios">
               <PropertyRef Name="idUsuario" />
             </Principal>
             <Dependent Role="asig_rol_usuario">
@@ -326,13 +327,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkUsuario_Empleado">
-          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
-          <End Role="usuario_sistema" Type="Self.usuario_sistema" Multiplicity="*" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="empleado">
+            <Principal Role="empleados">
               <PropertyRef Name="idEmpleado" />
             </Principal>
-            <Dependent Role="usuario_sistema">
+            <Dependent Role="usuarios">
               <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
@@ -344,7 +345,7 @@
           <EntitySet Name="consultas" EntityType="Self.consultas" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="detalles_consulta" EntityType="Self.detalles_consulta" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="detalles_receta" EntityType="Self.detalles_receta" Schema="clinicasbd" store:Type="Tables" />
-          <EntitySet Name="empleado" EntityType="Self.empleado" Schema="clinicasbd" store:Type="Tables" />
+          <EntitySet Name="empleados" EntityType="Self.empleados" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="especialidades" EntityType="Self.especialidades" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="medicamentos" EntityType="Self.medicamentos" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="medicos" EntityType="Self.medicos" Schema="clinicasbd" store:Type="Tables" />
@@ -352,10 +353,10 @@
           <EntitySet Name="padecimientos" EntityType="Self.padecimientos" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="recetas" EntityType="Self.recetas" Schema="clinicasbd" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="clinicasbd" store:Type="Tables" />
-          <EntitySet Name="usuario_sistema" EntityType="Self.usuario_sistema" Schema="clinicasbd" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="clinicasbd" store:Type="Tables" />
           <AssociationSet Name="fk_EmpleadoClinicas" Association="Self.fk_EmpleadoClinicas">
             <End Role="clinicas" EntitySet="clinicas" />
-            <End Role="empleado" EntitySet="empleado" />
+            <End Role="empleados" EntitySet="empleados" />
           </AssociationSet>
           <AssociationSet Name="fk_especialidaes_asignacion" Association="Self.fk_especialidaes_asignacion">
             <End Role="especialidades" EntitySet="especialidades" />
@@ -374,7 +375,7 @@
             <End Role="asig_rol_usuario" EntitySet="asig_rol_usuario" />
           </AssociationSet>
           <AssociationSet Name="fkAsigUser" Association="Self.fkAsigUser">
-            <End Role="usuario_sistema" EntitySet="usuario_sistema" />
+            <End Role="usuarios" EntitySet="usuarios" />
             <End Role="asig_rol_usuario" EntitySet="asig_rol_usuario" />
           </AssociationSet>
           <AssociationSet Name="fkDetalleConsulta" Association="Self.fkDetalleConsulta">
@@ -406,8 +407,8 @@
             <End Role="recetas" EntitySet="recetas" />
           </AssociationSet>
           <AssociationSet Name="fkUsuario_Empleado" Association="Self.fkUsuario_Empleado">
-            <End Role="empleado" EntitySet="empleado" />
-            <End Role="usuario_sistema" EntitySet="usuario_sistema" />
+            <End Role="empleados" EntitySet="empleados" />
+            <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -420,13 +421,14 @@
             <PropertyRef Name="idClinica" />
           </Key>
           <Property Name="idClinica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Especialidad" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="administrador" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tel_1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tel_2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="tel_3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="empleado" Relationship="Self.fk_EmpleadoClinicas" FromRole="clinicas" ToRole="empleado" />
+          <NavigationProperty Name="empleados" Relationship="Self.fk_EmpleadoClinicas" FromRole="clinicas" ToRole="empleados" />
           <NavigationProperty Name="medicos" Relationship="Self.fk_medico_clinicas" FromRole="clinicas" ToRole="medicos" />
         </EntityType>
         <EntityType Name="consultas">
@@ -470,7 +472,7 @@
           <NavigationProperty Name="medicamentos" Relationship="Self.fkDetallesMedicamento" FromRole="detalles_receta" ToRole="medicamentos" />
           <NavigationProperty Name="recetas" Relationship="Self.fkDetallesReceta" FromRole="detalles_receta" ToRole="recetas" />
         </EntityType>
-        <EntityType Name="empleado">
+        <EntityType Name="empleados">
           <Key>
             <PropertyRef Name="idEmpleado" />
           </Key>
@@ -484,8 +486,8 @@
           <Property Name="activo" Type="SByte" />
           <Property Name="cargo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="idClinica" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="clinicas" Relationship="Self.fk_EmpleadoClinicas" FromRole="empleado" ToRole="clinicas" />
-          <NavigationProperty Name="usuario_sistema" Relationship="Self.fkUsuario_Empleado" FromRole="empleado" ToRole="usuario_sistema" />
+          <NavigationProperty Name="clinicas" Relationship="Self.fk_EmpleadoClinicas" FromRole="empleados" ToRole="clinicas" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkUsuario_Empleado" FromRole="empleados" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="especialidades">
           <Key>
@@ -573,9 +575,9 @@
           <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="usuario_sistema" Relationship="Self.asig_rol_usuario" FromRole="roles" ToRole="usuario_sistema" />
+          <NavigationProperty Name="usuarios" Relationship="Self.asig_rol_usuario" FromRole="roles" ToRole="usuarios" />
         </EntityType>
-        <EntityType Name="usuario_sistema">
+        <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
@@ -584,17 +586,17 @@
           <Property Name="password" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="activo" Type="SByte" />
           <Property Name="idEmpleado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="empleado" Relationship="Self.fkUsuario_Empleado" FromRole="usuario_sistema" ToRole="empleado" />
-          <NavigationProperty Name="roles" Relationship="Self.asig_rol_usuario" FromRole="usuario_sistema" ToRole="roles" />
+          <NavigationProperty Name="empleados" Relationship="Self.fkUsuario_Empleado" FromRole="usuarios" ToRole="empleados" />
+          <NavigationProperty Name="roles" Relationship="Self.asig_rol_usuario" FromRole="usuarios" ToRole="roles" />
         </EntityType>
         <Association Name="fk_EmpleadoClinicas">
           <End Role="clinicas" Type="Self.clinicas" Multiplicity="1" />
-          <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="clinicas">
               <PropertyRef Name="idClinica" />
             </Principal>
-            <Dependent Role="empleado">
+            <Dependent Role="empleados">
               <PropertyRef Name="idClinica" />
             </Dependent>
           </ReferentialConstraint>
@@ -696,13 +698,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkUsuario_Empleado">
-          <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
-          <End Role="usuario_sistema" Type="Self.usuario_sistema" Multiplicity="*" />
+          <End Role="empleados" Type="Self.empleados" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="empleado">
+            <Principal Role="empleados">
               <PropertyRef Name="idEmpleado" />
             </Principal>
-            <Dependent Role="usuario_sistema">
+            <Dependent Role="usuarios">
               <PropertyRef Name="idEmpleado" />
             </Dependent>
           </ReferentialConstraint>
@@ -713,14 +715,14 @@
         </Association>
         <Association Name="asig_rol_usuario">
           <End Role="roles" Type="Self.roles" Multiplicity="*" />
-          <End Role="usuario_sistema" Type="Self.usuario_sistema" Multiplicity="*" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
         </Association>
         <EntityContainer Name="ClinicasBdEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="clinicas" EntityType="Self.clinicas" />
           <EntitySet Name="consultas" EntityType="Self.consultas" />
           <EntitySet Name="detalles_consulta" EntityType="Self.detalles_consulta" />
           <EntitySet Name="detalles_receta" EntityType="Self.detalles_receta" />
-          <EntitySet Name="empleado" EntityType="Self.empleado" />
+          <EntitySet Name="empleados" EntityType="Self.empleados" />
           <EntitySet Name="especialidades" EntityType="Self.especialidades" />
           <EntitySet Name="medicamentos" EntityType="Self.medicamentos" />
           <EntitySet Name="medicos" EntityType="Self.medicos" />
@@ -728,10 +730,10 @@
           <EntitySet Name="padecimientos" EntityType="Self.padecimientos" />
           <EntitySet Name="recetas" EntityType="Self.recetas" />
           <EntitySet Name="roles" EntityType="Self.roles" />
-          <EntitySet Name="usuario_sistema" EntityType="Self.usuario_sistema" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
           <AssociationSet Name="fk_EmpleadoClinicas" Association="Self.fk_EmpleadoClinicas">
             <End Role="clinicas" EntitySet="clinicas" />
-            <End Role="empleado" EntitySet="empleado" />
+            <End Role="empleados" EntitySet="empleados" />
           </AssociationSet>
           <AssociationSet Name="fk_medico_clinicas" Association="Self.fk_medico_clinicas">
             <End Role="clinicas" EntitySet="clinicas" />
@@ -766,8 +768,8 @@
             <End Role="detalles_receta" EntitySet="detalles_receta" />
           </AssociationSet>
           <AssociationSet Name="fkUsuario_Empleado" Association="Self.fkUsuario_Empleado">
-            <End Role="empleado" EntitySet="empleado" />
-            <End Role="usuario_sistema" EntitySet="usuario_sistema" />
+            <End Role="empleados" EntitySet="empleados" />
+            <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
           <AssociationSet Name="asig_especialidades_medico" Association="Self.asig_especialidades_medico">
             <End Role="especialidades" EntitySet="especialidades" />
@@ -775,7 +777,7 @@
           </AssociationSet>
           <AssociationSet Name="asig_rol_usuario" Association="Self.asig_rol_usuario">
             <End Role="roles" EntitySet="roles" />
-            <End Role="usuario_sistema" EntitySet="usuario_sistema" />
+            <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -788,6 +790,7 @@
             <EntityTypeMapping TypeName="ClinicasBdModel.clinicas">
               <MappingFragment StoreEntitySet="clinicas">
                 <ScalarProperty Name="idClinica" ColumnName="idClinica" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="administrador" ColumnName="administrador" />
@@ -831,9 +834,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="empleado">
-            <EntityTypeMapping TypeName="ClinicasBdModel.empleado">
-              <MappingFragment StoreEntitySet="empleado">
+          <EntitySetMapping Name="empleados">
+            <EntityTypeMapping TypeName="ClinicasBdModel.empleados">
+              <MappingFragment StoreEntitySet="empleados">
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -932,9 +935,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="usuario_sistema">
-            <EntityTypeMapping TypeName="ClinicasBdModel.usuario_sistema">
-              <MappingFragment StoreEntitySet="usuario_sistema">
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="ClinicasBdModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -955,7 +958,7 @@
             <EndProperty Name="roles">
               <ScalarProperty Name="idRol" ColumnName="idRol" />
             </EndProperty>
-            <EndProperty Name="usuario_sistema">
+            <EndProperty Name="usuarios">
               <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
             </EndProperty>
           </AssociationSetMapping>

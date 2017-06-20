@@ -17,7 +17,7 @@ namespace WebApp.Areas.Clinicas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public roles()
         {
-            this.usuario_sistema = new HashSet<usuario_sistema>();
+            this.usuarios = new HashSet<usuarios>();
         }
     
         public int idRol { get; set; }
@@ -25,6 +25,6 @@ namespace WebApp.Areas.Clinicas.Models
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuario_sistema> usuario_sistema { get; set; }
+        public virtual ICollection<usuarios> usuarios { get; set; }
     }
 }

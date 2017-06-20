@@ -1,0 +1,75 @@
+﻿@model WebApp.Areas.Clinicas.Models.clinicas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>clinicas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especialidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especialidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.administrador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.administrador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idClinica }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

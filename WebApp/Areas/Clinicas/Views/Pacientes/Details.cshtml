@@ -1,0 +1,131 @@
+﻿@model WebApp.Areas.Clinicas.Models.pacientes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pacientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dpi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dpi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alergias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alergias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.encargado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_encargado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPaciente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,35 @@
+﻿@model WebApp.Areas.Clinicas.Models.recetas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>recetas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.consultas.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.consultas.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idRecetas }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

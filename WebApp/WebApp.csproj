@@ -166,7 +166,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Clinicas\ClinicasAreaRegistration.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\ClinicasController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\ConsultasController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\Detalles_ConsultaController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\Detalles_RecetaController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\EmpleadosController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\EspecialidadesController.cs" />
     <Compile Include="Areas\Clinicas\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\MedicamentosController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\MedicosController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\PacientesController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\PadecimientosController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\RecetasController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Clinicas\Controllers\UsuariosController.cs" />
     <Compile Include="Areas\Clinicas\Models\clinicas.cs">
       <DependentUpon>ClinicasModel.tt</DependentUpon>
     </Compile>
@@ -194,7 +207,7 @@
     <Compile Include="Areas\Clinicas\Models\detalles_receta.cs">
       <DependentUpon>ClinicasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Clinicas\Models\empleado.cs">
+    <Compile Include="Areas\Clinicas\Models\empleados.cs">
       <DependentUpon>ClinicasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Areas\Clinicas\Models\especialidades.cs">
@@ -218,7 +231,7 @@
     <Compile Include="Areas\Clinicas\Models\roles.cs">
       <DependentUpon>ClinicasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Clinicas\Models\usuario_sistema.cs">
+    <Compile Include="Areas\Clinicas\Models\usuarios.cs">
       <DependentUpon>ClinicasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
@@ -255,6 +268,14 @@
     <Content Include="Areas\Clinicas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Clinicas\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Clinicas\Views\Home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Clinicas\Views\Clinicas\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Clinicas\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Clinicas\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Clinicas\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Clinicas\Index.cshtml" />
     <EntityDeploy Include="Areas\Clinicas\Models\ClinicasModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClinicasModel.Designer.cs</LastGenOutput>
@@ -262,9 +283,66 @@
     <Content Include="Areas\Clinicas\Models\ClinicasModel.edmx.diagram">
       <DependentUpon>ClinicasModel.edmx</DependentUpon>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Clinicas\Views\Consultas\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Consultas\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Consultas\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Consultas\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Consultas\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Consulta\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Consulta\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Consulta\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Consulta\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Consulta\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Receta\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Receta\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Receta\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Receta\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Detalles_Receta\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Empleados\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Empleados\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Empleados\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Empleados\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Empleados\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Especialidades\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Especialidades\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Especialidades\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Especialidades\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Especialidades\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicamentos\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicamentos\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicamentos\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicamentos\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicamentos\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicos\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicos\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicos\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicos\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Medicos\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Pacientes\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Pacientes\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Pacientes\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Pacientes\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Pacientes\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Padecimientos\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Padecimientos\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Padecimientos\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Padecimientos\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Padecimientos\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Recetas\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Recetas\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Recetas\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Recetas\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Recetas\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Roles\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Usuarios\Create.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Usuarios\Delete.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Usuarios\Details.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Usuarios\Edit.cshtml" />
+    <Content Include="Areas\Clinicas\Views\Usuarios\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

@@ -29,7 +29,7 @@ namespace WebApp.Areas.Clinicas.Models
         public virtual DbSet<consultas> consultas { get; set; }
         public virtual DbSet<detalles_consulta> detalles_consulta { get; set; }
         public virtual DbSet<detalles_receta> detalles_receta { get; set; }
-        public virtual DbSet<empleado> empleado { get; set; }
+        public virtual DbSet<empleados> empleados { get; set; }
         public virtual DbSet<especialidades> especialidades { get; set; }
         public virtual DbSet<medicamentos> medicamentos { get; set; }
         public virtual DbSet<medicos> medicos { get; set; }
@@ -37,6 +37,6 @@ namespace WebApp.Areas.Clinicas.Models
         public virtual DbSet<padecimientos> padecimientos { get; set; }
         public virtual DbSet<recetas> recetas { get; set; }
         public virtual DbSet<roles> roles { get; set; }
-        public virtual DbSet<usuario_sistema> usuario_sistema { get; set; }
+        public virtual DbSet<usuarios> usuarios { get; set; }
     }
 }

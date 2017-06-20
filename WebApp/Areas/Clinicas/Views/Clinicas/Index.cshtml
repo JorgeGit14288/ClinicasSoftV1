@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApp.Areas.Clinicas.Models.clinicas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.administrador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel_3)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.administrador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_3)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idClinica }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idClinica }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idClinica })
+        </td>
+    </tr>
+}
+
+</table>

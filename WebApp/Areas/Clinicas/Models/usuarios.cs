@@ -12,27 +12,22 @@ namespace WebApp.Areas.Clinicas.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class empleado
+    public partial class usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public empleado()
+        public usuarios()
         {
-            this.usuario_sistema = new HashSet<usuario_sistema>();
+            this.roles = new HashSet<roles>();
         }
     
-        public int idEmpleado { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public string direccion { get; set; }
-        public string celular { get; set; }
-        public string tel_casa { get; set; }
+        public int idUsuario { get; set; }
         public string correo { get; set; }
+        public string password { get; set; }
         public Nullable<sbyte> activo { get; set; }
-        public string cargo { get; set; }
-        public int idClinica { get; set; }
+        public int idEmpleado { get; set; }
     
-        public virtual clinicas clinicas { get; set; }
+        public virtual empleados empleados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuario_sistema> usuario_sistema { get; set; }
+        public virtual ICollection<roles> roles { get; set; }
     }
 }

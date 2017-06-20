@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WebApp.Areas.Clinicas.Models.pacientes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Clinicas/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dpi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono_casa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.altura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.alergias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.encargado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel_encargado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dpi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono_casa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.altura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.alergias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.encargado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_encargado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPaciente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPaciente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idPaciente })
+        </td>
+    </tr>
+}
+
+</table>
