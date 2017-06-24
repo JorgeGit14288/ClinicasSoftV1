@@ -16,11 +16,10 @@ namespace WebApp.Areas.Clinicas.Models
     {
         public int idDetalle { get; set; }
         public int idReceta { get; set; }
-        public int idMedicamento { get; set; }
         public string dosis { get; set; }
         public string observaciones { get; set; }
+        public string medicamento { get; set; }
     
-        public virtual medicamentos medicamentos { get; set; }
         public virtual recetas recetas { get; set; }
     }
 }

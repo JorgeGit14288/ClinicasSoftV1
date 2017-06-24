@@ -18,7 +18,7 @@ namespace WebApp.Areas.Clinicas.Controllers
         // GET: Clinicas/Detalles_Receta
         public async Task<ActionResult> Index()
         {
-            var detalles_receta = db.detalles_receta.Include(d => d.medicamentos).Include(d => d.recetas);
+            var detalles_receta = db.detalles_receta.Include(d => d.recetas);
             return View(await detalles_receta.ToListAsync());
         }
 
@@ -40,7 +40,6 @@ namespace WebApp.Areas.Clinicas.Controllers
         // GET: Clinicas/Detalles_Receta/Create
         public ActionResult Create()
         {
-            ViewBag.idMedicamento = new SelectList(db.medicamentos, "idMedicamentos", "nombre");
             ViewBag.idReceta = new SelectList(db.recetas, "idRecetas", "observaciones");
             return View();
         }
@@ -50,7 +49,7 @@ namespace WebApp.Areas.Clinicas.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idDetalle,idReceta,idMedicamento,dosis,observaciones")] detalles_receta detalles_receta)
+        public async Task<ActionResult> Create([Bind(Include = "idDetalle,idReceta,dosis,observaciones,medicamento")] detalles_receta detalles_receta)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,6 @@ namespace WebApp.Areas.Clinicas.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idMedicamento = new SelectList(db.medicamentos, "idMedicamentos", "nombre", detalles_receta.idMedicamento);
             ViewBag.idReceta = new SelectList(db.recetas, "idRecetas", "observaciones", detalles_receta.idReceta);
             return View(detalles_receta);
         }
@@ -76,7 +74,6 @@ namespace WebApp.Areas.Clinicas.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idMedicamento = new SelectList(db.medicamentos, "idMedicamentos", "nombre", detalles_receta.idMedicamento);
             ViewBag.idReceta = new SelectList(db.recetas, "idRecetas", "observaciones", detalles_receta.idReceta);
             return View(detalles_receta);
         }
@@ -86,7 +83,7 @@ namespace WebApp.Areas.Clinicas.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idDetalle,idReceta,idMedicamento,dosis,observaciones")] detalles_receta detalles_receta)
+        public async Task<ActionResult> Edit([Bind(Include = "idDetalle,idReceta,dosis,observaciones,medicamento")] detalles_receta detalles_receta)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +91,6 @@ namespace WebApp.Areas.Clinicas.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idMedicamento = new SelectList(db.medicamentos, "idMedicamentos", "nombre", detalles_receta.idMedicamento);
             ViewBag.idReceta = new SelectList(db.recetas, "idRecetas", "observaciones", detalles_receta.idReceta);
             return View(detalles_receta);
         }

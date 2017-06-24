@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClinicasBdModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClinicasBdModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="asig_especialidades_medico">
           <Key>
             <PropertyRef Name="idMedico" />
@@ -63,7 +63,7 @@
           </Key>
           <Property Name="idDetalle" Type="int" Nullable="false" />
           <Property Name="idReceta" Type="int" Nullable="false" />
-          <Property Name="idMedicamento" Type="int" Nullable="false" />
+          <Property Name="medicamento" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="dosis" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="observaciones" Type="varchar" MaxLength="200" />
         </EntityType>
@@ -254,18 +254,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkDetallesMedicamento">
-          <End Role="medicamentos" Type="Self.medicamentos" Multiplicity="1" />
-          <End Role="detalles_receta" Type="Self.detalles_receta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="medicamentos">
-              <PropertyRef Name="idMedicamentos" />
-            </Principal>
-            <Dependent Role="detalles_receta">
-              <PropertyRef Name="idMedicamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fkDetallesPadecimiento">
           <End Role="padecimientos" Type="Self.padecimientos" Multiplicity="1" />
           <End Role="detalles_consulta" Type="Self.detalles_consulta" Multiplicity="*" />
@@ -382,10 +370,6 @@
             <End Role="consultas" EntitySet="consultas" />
             <End Role="detalles_consulta" EntitySet="detalles_consulta" />
           </AssociationSet>
-          <AssociationSet Name="fkDetallesMedicamento" Association="Self.fkDetallesMedicamento">
-            <End Role="medicamentos" EntitySet="medicamentos" />
-            <End Role="detalles_receta" EntitySet="detalles_receta" />
-          </AssociationSet>
           <AssociationSet Name="fkDetallesPadecimiento" Association="Self.fkDetallesPadecimiento">
             <End Role="padecimientos" EntitySet="padecimientos" />
             <End Role="detalles_consulta" EntitySet="detalles_consulta" />
@@ -411,8 +395,7 @@
             <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClinicasBdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -466,11 +449,10 @@
           </Key>
           <Property Name="idDetalle" Type="Int32" Nullable="false" />
           <Property Name="idReceta" Type="Int32" Nullable="false" />
-          <Property Name="idMedicamento" Type="Int32" Nullable="false" />
           <Property Name="dosis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="medicamentos" Relationship="Self.fkDetallesMedicamento" FromRole="detalles_receta" ToRole="medicamentos" />
           <NavigationProperty Name="recetas" Relationship="Self.fkDetallesReceta" FromRole="detalles_receta" ToRole="recetas" />
+          <Property Name="medicamento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="empleados">
           <Key>
@@ -508,7 +490,6 @@
           <Property Name="presentacion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="precio" Type="Decimal" />
           <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="detalles_receta" Relationship="Self.fkDetallesMedicamento" FromRole="medicamentos" ToRole="detalles_receta" />
         </EntityType>
         <EntityType Name="medicos">
           <Key>
@@ -673,18 +654,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkDetallesMedicamento">
-          <End Role="medicamentos" Type="Self.medicamentos" Multiplicity="1" />
-          <End Role="detalles_receta" Type="Self.detalles_receta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="medicamentos">
-              <PropertyRef Name="idMedicamentos" />
-            </Principal>
-            <Dependent Role="detalles_receta">
-              <PropertyRef Name="idMedicamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fkDetallesReceta">
           <End Role="recetas" Type="Self.recetas" Multiplicity="1" />
           <End Role="detalles_receta" Type="Self.detalles_receta" Multiplicity="*" />
@@ -759,10 +728,6 @@
             <End Role="padecimientos" EntitySet="padecimientos" />
             <End Role="detalles_consulta" EntitySet="detalles_consulta" />
           </AssociationSet>
-          <AssociationSet Name="fkDetallesMedicamento" Association="Self.fkDetallesMedicamento">
-            <End Role="medicamentos" EntitySet="medicamentos" />
-            <End Role="detalles_receta" EntitySet="detalles_receta" />
-          </AssociationSet>
           <AssociationSet Name="fkDetallesReceta" Association="Self.fkDetallesReceta">
             <End Role="recetas" EntitySet="recetas" />
             <End Role="detalles_receta" EntitySet="detalles_receta" />
@@ -826,9 +791,9 @@
           <EntitySetMapping Name="detalles_receta">
             <EntityTypeMapping TypeName="ClinicasBdModel.detalles_receta">
               <MappingFragment StoreEntitySet="detalles_receta">
+                <ScalarProperty Name="medicamento" ColumnName="medicamento" />
                 <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
                 <ScalarProperty Name="idReceta" ColumnName="idReceta" />
-                <ScalarProperty Name="idMedicamento" ColumnName="idMedicamento" />
                 <ScalarProperty Name="dosis" ColumnName="dosis" />
                 <ScalarProperty Name="observaciones" ColumnName="observaciones" />
               </MappingFragment>

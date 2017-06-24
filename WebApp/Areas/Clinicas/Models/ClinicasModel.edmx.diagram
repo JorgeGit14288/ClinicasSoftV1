@@ -25,7 +25,6 @@
         <AssociationConnector Association="ClinicasBdModel.fkPaciente_consulta" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicasBdModel.fkResetaConsulta" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicasBdModel.fkDetallesPadecimiento" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicasBdModel.fkDetallesMedicamento" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicasBdModel.fkDetallesReceta" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicasBdModel.fkUsuario_Empleado" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicasBdModel.asig_especialidades_medico" ManuallyRouted="false" />
